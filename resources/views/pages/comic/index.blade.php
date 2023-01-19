@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title-page', 'DC Comics - Home')
+
 
 @section('main')
     <div class="comics-section">

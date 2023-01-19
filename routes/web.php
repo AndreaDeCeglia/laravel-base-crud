@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'PagesController@index' )->name('home');
 
-    $comics = config('comics');
-
-    return view('home', compact('comics'));
-});
+Route::resource('/comics', 'ComicController');
+//Route::resource('/comics', ComicController::class);
 
 Route::get('/show{key}', function ($key) {
     
