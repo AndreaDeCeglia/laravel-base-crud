@@ -14,5 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $comics = config('comics');
+
+    return view('home', compact('comics'));
 });
+
+Route::get('/show{key}', function ($key) {
+    
+    $comics = config('comics');
+
+    if( is_numeric($key) && $key >= 0 && $key < count($comics) ){
+        $single_comic = $comics[$key];
+    } else {
+        abort(404);
+    }
+
+    
+
+    return view('show', compact('single_comic'));
+})->name('show.comic');
