@@ -47,6 +47,17 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->All();
+
+        $request->validate(
+            [
+                'title' => 'required|max:50'
+            ],
+            [
+                'title.required' => 'Attenzione il campo title è obbligatorio',
+                'title.max' => 'Attenzione il campo non deve superare i 50 caratteri'
+            ]
+        );
+
         $new_comic = new Comic();
         $new_comic->fill($data);
         $new_comic->save();
@@ -76,7 +87,9 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+
+        return view('pages.comic.edit', compact('comic'));
     }
 
     /**
@@ -90,6 +103,17 @@ class ComicController extends Controller
     {
         $data = $request->All();
         $comic = Comic::findOrFail($id);
+
+        $request->validate(
+            [
+                'title' => 'required|max:50'
+            ],
+            [
+                'title.required' => 'Attenzione il campo title è obbligatorio',
+                'title.max' => 'Attenzione il campo non deve superare i 50 caratteri'
+            ]
+        );
+
         $comic->update($data);
 
         return redirect()->route('comics.show', $comic->id)->with('success', "Hai modificato correttamente il fumetto: $comic->title");
