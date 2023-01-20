@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('main')
-<img src="{{ $single_comic['thumb'] }}" alt="">
+<img src="{{ $comic->thumb }}" alt="">
 <h3>
-    {{ $single_comic['title'] }}
+    {{ $comic->title }}
 </h3>
+<p>
+    {{!!$comic->description!!}}
+</p>
 @endsection

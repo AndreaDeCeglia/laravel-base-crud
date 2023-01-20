@@ -6,8 +6,8 @@
     <div class="comics-section">
         <div class="container py-5">
             <div class="d-flex flex-wrap">
-                @foreach ($comics as $key => $elem)
-                <a href="{{ route('show.comic', compact('key')) }}">
+                @foreach ($comics as $elem)
+                <a href="{{ route('comics.show', $elem->id) }}">
                     <div class="card-container d-flex flex-column">
                         <div>
                             <img class="image-comic" src="{{ $elem['thumb'] }}" alt="Card image cap">
@@ -21,9 +21,9 @@
             </div>
         </div>
         <div>
-            <button id="load">
+            <a class="btn btn-primary" href="{{ route('comics.create') }}" id="load">
                 LOAD MORE
-            </button>
+            </a>
         </div>
         
     </div>
