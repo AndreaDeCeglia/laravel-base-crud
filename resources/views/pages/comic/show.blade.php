@@ -8,4 +8,13 @@
 <p>
     {{!!$comic->description!!}}
 </p>
+<div>
+    <form action="{{route('comics.destroy', $elem->id)}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-dark" type="submit">
+            X
+        </button>
+    </form>
+</div>
 @endsection

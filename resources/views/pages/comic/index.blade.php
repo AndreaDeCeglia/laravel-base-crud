@@ -3,6 +3,13 @@
 
 
 @section('main')
+
+    @if ( session('success') )
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="comics-section">
         <div class="container py-5">
             <div class="d-flex flex-wrap">
